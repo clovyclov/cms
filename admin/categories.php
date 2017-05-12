@@ -22,7 +22,7 @@
 
                         <div class="col-xs-6">
 
-                          <? if(isset($cat_submit_error)) : ?>
+                          <? if( isset($cat_submit_error) ) : ?>
                             <?= $cat_submit_error; ?>
                           <? endif ?>
                           <form action="" method="post">
