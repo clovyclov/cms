@@ -22,7 +22,7 @@
 
                         <div class="col-xs-6">
 
-                          <? if(isset($cat_submit_error)) : ?>
+                          <? if( isset($cat_submit_error) ) : ?>
                             <?= $cat_submit_error; ?>
                           <? endif ?>
                           <form action="" method="post">
@@ -46,7 +46,7 @@
                             </thead>
                             <tbody>
 
-                              <? foreach($cat_result as $result) : ?>
+                              <? foreach( $cat_result as $result ) : ?>
                               <tr>
                                 <td><?= $result['cat_id'] ?></td>
                                 <td><?= $result['cat_title'] ?></td>
