@@ -46,7 +46,7 @@
                             </thead>
                             <tbody>
 
-                              <? foreach($cat_result as $result) : ?>
+                              <? foreach( $cat_result as $result ) : ?>
                               <tr>
                                 <td><?= $result['cat_id'] ?></td>
                                 <td><?= $result['cat_title'] ?></td>
