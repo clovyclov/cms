@@ -222,3 +222,8 @@ ul.alert-dropdown {
 .panel-yellow a:hover {
     color: #df8a13;
 }
+
+td.post_admin_img img{
+    max-width: 200px;
+    display: inline-block;
+}

@@ -6,7 +6,6 @@
 
 
 
-
         <div id="page-wrapper">
 
             <div class="container-fluid">
@@ -15,9 +14,41 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to the Admin area
+                            Categories
                             <small>Clovis' CMS</small>
                         </h1>
+
+
+                    <div class="col-xs-12">
+
+                      <?php
+
+                        if(isset( $_GET['posts'] )) {
+
+                          $source = $_GET['posts'];
+
+                          switch( $source ) {
+                            case "view_all" :
+                              include 'posts_templates/posts_all.php';
+                              break;
+                            case "add_post" :
+                              echo "<h2>Create a new post</h2>";
+                              include 'posts_templates/add_post.php';
+                              break;
+                            default :
+                              include 'posts_templates/posts_all.php';
+                          }
+
+                        }else {
+                            include 'posts_templates/posts_all.php';
+                        }
+
+                       ?>
+
+                    </div>
+
+
+
                         <!-- <ol class="breadcrumb">
                             <li>
                                 <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>

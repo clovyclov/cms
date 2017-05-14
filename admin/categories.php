@@ -14,8 +14,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Welcome to the Admin area
-                            <small>Author</small>
+                            Categories
+                            <small>Clovis' CMS</small>
                         </h1>
 
 
@@ -34,6 +34,23 @@
                               <input class="btn btn-primary" type="submit" name="cat_submit" value="Add Category">
                             </div>
                           </form>
+
+                          <?php if( isset($_GET['cat_edit']) ) { ?>
+
+                          <form action="" method="">
+                            <div class="form-group">
+                              <input type="text" name="cat_edit_id" class="hidden" value="<?php echo $_GET['cat_edit']; ?>">
+
+                              <label for="cat_title">Edit Category</label>
+                              <input class="form-control" type="text" name="cat_title_edit" value="<?php echo $_GET['cat_title_edit']; ?>">
+                            </div>
+                            <div class="form-group">
+                              <input class="btn btn-primary" type="submit" name="cat_edit_submit" value="Edit Category">
+                            </div>
+                          </form>
+
+                          <?php } ?>
+
                         </div>
 
                         <div class="col-xs-6">
@@ -42,6 +59,8 @@
                               <tr>
                                 <th>ID</th>
                                 <th>Category Title</th>
+                                <th>Edit Category</th>
+                                <th>Delete Category</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -50,9 +69,11 @@
                               <tr>
                                 <td><?= $result['cat_id'] ?></td>
                                 <td><?= $result['cat_title'] ?></td>
+                                <td><?php echo "<a href=\"categories.php?cat_edit={$result['cat_id']}&cat_title_edit={$result['cat_title']}\">Edit</a>" ?></td>
                                 <td><?php echo "<a href=\"categories.php?cat_delete={$result['cat_id']}\">Delete</a>" ?></td>
                               </tr>
                             <? endforeach ?>
+
                             </tbody>
                           </table>
                         </div>
