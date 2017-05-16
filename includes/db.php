@@ -7,6 +7,10 @@ try{
   die("Sorry, something went wrong!");
 }
 
+/*********************************
+    CATEGORY FUNCTIONALITY
+*********************************/
+
 //Add category
 if( isset($_POST['cat_title']) ){
   if(!empty($_POST['cat_title'])) {
@@ -33,23 +37,22 @@ if(isset($_GET['cat_delete'])){
   $del_cat_statement->execute();
 }
 
+/*********************************
+    POSTS FUNCTIONALITY
+*********************************/
+
 //Select everything from `categories` table
 $cat_statement = $db->prepare("SELECT * FROM categories");
 $exe = $cat_statement->execute();
 $cat_result = $cat_statement->fetchAll(PDO::FETCH_ASSOC);
 
-//Select everything from `posts` table
-$posts_statement = $db->prepare("SELECT * FROM posts");
-$exe = $posts_statement->execute();
-$posts_result = $posts_statement->fetchAll(PDO::FETCH_ASSOC);
 
-//Search Functionality
-if( isset($_POST['search']) ){
-  $search = $_POST['search'];
-  $search_statement = $db->prepare("SELECT * FROM posts WHERE post_tags LIKE '%{$search}%'");
-  $exe = $search_statement->execute();
-  $search_result = $search_statement->fetchAll(PDO::FETCH_ASSOC);
-  $s_results = $search_statement->rowCount();
+//Delete post Functionality
+if( isset($_GET['post_del_id']) ){
+
+  $del_post_id = $_GET['post_del_id'];
+  $db->query("DELETE FROM posts WHERE post_id = {$del_post_id}");
+
 }
 
 //Add A Post Functionality
@@ -78,4 +81,19 @@ if(isset( $_POST['post_submit']) ){
     VALUES ('{$post_cat_id}', '{$post_title}', '{$post_post_author}', '{$post_date}', '{$post_image}', '{$post_content}', '{$post_tags}', '4', '{$post_status}' )");
     $img_exe = $add_post_statement->execute();
 
+}
+
+
+//Select everything from `posts` table
+$posts_statement = $db->prepare("SELECT * FROM posts");
+$exe = $posts_statement->execute();
+$posts_result = $posts_statement->fetchAll(PDO::FETCH_ASSOC);
+
+//Search Functionality
+if( isset($_POST['search']) ){
+  $search = $_POST['search'];
+  $search_statement = $db->prepare("SELECT * FROM posts WHERE post_tags LIKE '%{$search}%'");
+  $exe = $search_statement->execute();
+  $search_result = $search_statement->fetchAll(PDO::FETCH_ASSOC);
+  $s_results = $search_statement->rowCount();
 }

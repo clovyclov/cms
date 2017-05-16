@@ -25,6 +25,8 @@
       <td><img class="post_admin_img img-responsive" style="max-width:250px;" src="uploads/<?= $post['post_img'] ?>" alt=""></td>
       <td><?= $post['post_comment_count'] ?></td>
       <td><?= $post['post_tags'] ?></td>
+      <td><a href="edit_post.php?post_id=<?= $post['post_id'] ?>" style="display:block;padding:5px;background:#efefef;text-align:center;">Edit</a>
+          <a href="?post_del_id=<?= $post['post_id'] ?>" style="color:red;display:block;padding:5px;background:#efefef;text-align:center;margin-top:5px;">Delete</a></td>
     </tr>
     <? endforeach ?>
   </tbody>
